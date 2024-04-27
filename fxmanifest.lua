@@ -37,6 +37,7 @@ files {
 	'locales/*.json',
 	'audio/data/oxdoorlock_sounds.dat54.rel',
 	'audio/dlc_oxdoorlock/oxdoorlock.awc',
+	'stream/*.ytd',
 }
 
 data_file 'AUDIO_WAVEPACK' 'audio/dlc_oxdoorlock'

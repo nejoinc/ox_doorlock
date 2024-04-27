@@ -19,9 +19,6 @@ local function getDoorFromEntity(data)
 	return door
 end
 
-exports('getClosestDoorId', function() return ClosestDoor?.id end)
-exports('getDoorIdFromEntity', function(entityId) return getDoorFromEntity(entityId)?.id end) -- same as Entity(entityId).state.doorId
-
 local function entityIsNotDoor(data)
 	local entity = type(data) == 'number' and data or data.entity
 	return not getDoorFromEntity(entity)
@@ -47,10 +44,8 @@ local function pickLock(entity)
 
 	TaskTurnPedToFaceCoord(cache.ped, door.coords.x, door.coords.y, door.coords.z, 4000)
 	Wait(500)
-
-	local animDict = lib.requestAnimDict('mp_common_heist')
-
-	TaskPlayAnim(cache.ped, animDict, 'pick_door', 3.0, 1.0, -1, 49, 0, true, true, true)
+	lib.requestAnimDict('mp_common_heist')
+	TaskPlayAnim(cache.ped, 'mp_common_heist', 'pick_door', 3.0, 1.0, -1, 49, 0, true, true, true)
 
 	local success = lib.skillCheck(door.lockpickDifficulty or Config.LockDifficulty)
 	local rand = math.random(1, success and 100 or 5)
@@ -64,8 +59,7 @@ local function pickLock(entity)
 		lib.notify({ type = 'error', description = locale('lockpick_broke') })
 	end
 
-	StopEntityAnim(cache.ped, 'pick_door', animDict, 0)
-	RemoveAnimDict(animDict)
+	StopEntityAnim(cache.ped, 'pick_door', 'mp_common_heist', 0)
 
 	PickingLock = false
 end
@@ -100,8 +94,8 @@ end
 local isAddingDoorlock = false
 
 RegisterNUICallback('notify', function(data, cb)
-	cb(1)
-	lib.notify({ title = data })
+    cb(1)
+    lib.notify({title = data})
 end)
 
 RegisterNUICallback('createDoor', function(data, cb)
@@ -149,8 +143,7 @@ RegisterNUICallback('createDoor', function(data, cb)
 
 			if hit then
 				---@diagnostic disable-next-line: param-type-mismatch
-				DrawMarker(28, coords.x, coords.y, coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.2, 0.2, 255, 42, 24,
-					100, false, false, 0, true, false, false, false)
+				DrawMarker(28, coords.x, coords.y, coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.2, 0.2, 255, 42, 24, 100, false, false, 0, true, false, false, false)
 			end
 
 			if hit and entity > 0 and GetEntityType(entity) == 3 and (doorCount == 1 or doorA ~= entity) and entityIsNotDoor(entity) then
@@ -189,6 +182,7 @@ RegisterNUICallback('createDoor', function(data, cb)
 			data.coords = tempData[1].coords
 			data.heading = tempData[1].heading
 		end
+
 	else
 		if data.doors then
 			for i = 1, 2 do
@@ -217,11 +211,11 @@ RegisterNUICallback('deleteDoor', function(id, cb)
 end)
 
 RegisterNUICallback('teleportToDoor', function(id, cb)
-	cb(1)
-	SetNuiFocus(false, false)
-	local doorCoords = doors[id].coords
-	if not doorCoords then return end
-	SetEntityCoords(cache.ped, doorCoords.x, doorCoords.y, doorCoords.z, false, false, false, false)
+    cb(1)
+    SetNuiFocus(false, false)
+    local doorCoords = doors[id].coords
+    if not doorCoords then return end
+    SetEntityCoords(cache.ped, doorCoords.x, doorCoords.y, doorCoords.z, false, false, false, false)
 end)
 
 RegisterNUICallback('exit', function(_, cb)
