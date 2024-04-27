@@ -3,14 +3,10 @@
 Preview Images
 
 1.   
-
-Closed Door
 ![image](https://github.com/nejoinc/ox_doorlock/assets/84406318/37d6ba5a-14d0-48cf-aa18-15ae5b10fb19)
 
 2. 
-Open Door
 ![image](https://github.com/nejoinc/ox_doorlock/assets/84406318/fc63b023-520f-4d28-99ae-d358141345db)
-
 
 Door management resource, with compatibility for ox_core, qb-core, and es_extended.  
 Successor to nui_doorlock with less scuff and more stuff.
