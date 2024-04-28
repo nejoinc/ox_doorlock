@@ -1,14 +1,4 @@
-# Ox Doorlock NoPixel Inspired 
-
-Preview Images
-
-1.   
-![image](https://github.com/nejoinc/ox_doorlock/assets/84406318/3baef529-605a-4c24-bbca-944cc56a454b)
-
-
-2. 
-![image](https://github.com/nejoinc/ox_doorlock/assets/84406318/60908557-204d-4d0b-befe-e5537565ea2e)
-
+# Ox Doorlock
 
 Door management resource, with compatibility for ox_core, qb-core, and es_extended.  
 Successor to nui_doorlock with less scuff and more stuff.

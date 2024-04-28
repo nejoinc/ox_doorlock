@@ -11,10 +11,10 @@ Config.DrawTextUI = false
 ---Set the properties used by [DrawSprite](https://docs.fivem.net/natives/?_0xE7FFAE5EBF23D890).
 Config.DrawSprite = {
     -- Unlocked
-    [0] = { 'nejo_ui', 'key', 0, 0, 0.020, 0.020, 0, 255, 255, 255, 255 },
+    [0] = { 'nejo_ui', 'verde', 0, 0, 0.020, 0.020, 0, 255, 255, 255, 255 },
 
     -- Locked
-    [1] = { 'nejo_ui', 'key_red', 0, 0, 0.020, 0.020, 0, 255, 255, 255, 255 },
+    [1] = { 'nejo_ui', 'rojo', 0, 0, 0.020, 0.020, 0, 255, 255, 255, 255 },
 }
 
 ---Allow the specified ace principal to use 'command.doorlock'.
